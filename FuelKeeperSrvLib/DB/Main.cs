@@ -5,7 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 //using System.Data.SQLite;
-using SQLite;
+using SQLite.Net;
+//using SQLite.Net.Platform;
 
 namespace be.subport.app.FuelKeeper.SrvLib.DB
 {
@@ -13,7 +14,7 @@ namespace be.subport.app.FuelKeeper.SrvLib.DB
     {
         private readonly SQLiteConnection conn; 
         public const string DBFILENAME = "FuelKeeper.db";
-        public Main() : this(GetDefaultDBFile(true))
+        public Main(Platform platform) : this(platform, GetDefaultDBFile(true))
         {
 
         }
@@ -34,14 +35,15 @@ namespace be.subport.app.FuelKeeper.SrvLib.DB
             return dbFile;
         }
 
-        public Main(FileInfo databaseFile)
+        public Main(Platform platform, FileInfo databaseFile)
         {            
             this.conn = 
                 //new SQLiteConnection(string.Format("Data Source={0};Version=3;", databaseFile.FullName));
-                new SQLiteConnection(databaseFile.FullName);
+                new SQLiteConnection(platform.GetPlatform(), databaseFile.FullName);
 
             Migration.Migrate(this);
         }
+
 
         public SQLiteConnection Connection
         {

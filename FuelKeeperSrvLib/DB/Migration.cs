@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 //using System.Data.SQLite;
 using System.Reflection;
-using SQLite;
+using SQLite.Net;
 
 namespace be.subport.app.FuelKeeper.SrvLib.DB
 {

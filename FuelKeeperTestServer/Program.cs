@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using be.subport.app.FuelKeeper.SrvLib.DB;
 
 namespace be.subport.app.FuelKeeper.Test.Server
 {
@@ -25,7 +26,7 @@ namespace be.subport.app.FuelKeeper.Test.Server
         [STAThread]
         static void Main()
         {
-            var db = new be.subport.app.FuelKeeper.SrvLib.DB.Main();            
+            var db = new Main(new WindowsPlatform());
 
         }
     }
