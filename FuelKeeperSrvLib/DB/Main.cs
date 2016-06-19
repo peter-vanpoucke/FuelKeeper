@@ -4,7 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.IO;
-using System.Data.SQLite;
+//using System.Data.SQLite;
+using SQLite;
 
 namespace be.subport.app.FuelKeeper.SrvLib.DB
 {
@@ -17,10 +18,10 @@ namespace be.subport.app.FuelKeeper.SrvLib.DB
 
         }
 
-        public static FileInfo CreateDBFile (DirectoryInfo dataDir, string fileName)
+        private static FileInfo CreateFile (DirectoryInfo dataDir, string fileName)
         {
             var dbFilePath = Path.Combine(dataDir.FullName, fileName);
-            SQLiteConnection.CreateFile(dbFilePath);
+            //SQLiteConnection.CreateFile(dbFilePath);            
             return new FileInfo(dbFilePath);
         }
 
@@ -29,13 +30,15 @@ namespace be.subport.app.FuelKeeper.SrvLib.DB
             var dataDir = Helper.GetMainDir().GetDirectories("Data").First();
             var dbFile = dataDir.GetFiles(DBFILENAME).FirstOrDefault();
             if (createIfNonExistant && dbFile == null)
-                dbFile = CreateDBFile(dataDir, DBFILENAME);
+                dbFile = CreateFile(dataDir, DBFILENAME);
             return dbFile;
         }
 
         public Main(FileInfo databaseFile)
         {            
-            this.conn = new SQLiteConnection(string.Format("Data Source={0};Version=3;", databaseFile.FullName));
+            this.conn = 
+                //new SQLiteConnection(string.Format("Data Source={0};Version=3;", databaseFile.FullName));
+                new SQLiteConnection(databaseFile.FullName);
 
             Migration.Migrate(this);
         }

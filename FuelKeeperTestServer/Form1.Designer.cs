@@ -1,4 +1,4 @@
-﻿namespace be.subport.app.FuelKeeper.Test
+﻿namespace be.subport.app.FuelKeeper.Test.Server
 {
     partial class Form1
     {

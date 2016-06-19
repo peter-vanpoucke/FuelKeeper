@@ -25,7 +25,8 @@ namespace be.subport.app.FuelKeeper.Test.Server
         [STAThread]
         static void Main()
         {
-            
+            var db = new be.subport.app.FuelKeeper.SrvLib.DB.Main();            
+
         }
     }
 }
