@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("FuelKeeperLib")]
+[assembly: AssemblyTitle("FuelKeeperTestClient1")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("FuelKeeperLib")]
+[assembly: AssemblyProduct("FuelKeeperTestClient1")]
 [assembly: AssemblyCopyright("Copyright ©  2016")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("659ea162-7bb2-4b7c-ba6c-5ae43b46af13")]
+[assembly: Guid("6af2c350-c48e-4839-8329-20f2882153ed")]
 
 // Version information for an assembly consists of the following four values:
 //

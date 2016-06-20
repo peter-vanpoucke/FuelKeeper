@@ -33,7 +33,7 @@ namespace be.subport.app.FuelKeeper.SrvLib.DB.Tables
             set;
         }
 
-        [OneToMany("car_refuel_fk", "car")]
+        [OneToMany]
         public List<Refuel> refuels
         {
             get;

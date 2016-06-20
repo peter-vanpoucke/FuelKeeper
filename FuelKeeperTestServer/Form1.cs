@@ -12,9 +12,14 @@ namespace be.subport.app.FuelKeeper.Test.Server
 {
     public partial class Form1 : Form
     {
+        DataProviderRunner dpr;
+
         public Form1()
         {
             InitializeComponent();
+            dpr = new DataProviderRunner();
+            dpr.Run();
+            textBox1.Text = dpr.Test();
         }
     }
 }

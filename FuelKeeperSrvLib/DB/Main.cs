@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.IO;
 //using System.Data.SQLite;
 using SQLite.Net;
+using SQLiteNetExtensions.Extensions;
 //using SQLite.Net.Platform;
 
 namespace be.subport.app.FuelKeeper.SrvLib.DB
@@ -39,7 +40,7 @@ namespace be.subport.app.FuelKeeper.SrvLib.DB
         {            
             this.conn = 
                 //new SQLiteConnection(string.Format("Data Source={0};Version=3;", databaseFile.FullName));
-                new SQLiteConnection(platform.GetPlatform(), databaseFile.FullName);
+                new SQLiteConnection(platform.GetPlatform(), databaseFile.FullName);            
 
             Migration.Migrate(this);
         }
@@ -48,6 +49,19 @@ namespace be.subport.app.FuelKeeper.SrvLib.DB
         public SQLiteConnection Connection
         {
             get { return this.conn; }
+        }
+
+        public IEnumerable<Tables.Car> GetData()
+        {
+            return this.Connection.GetAllWithChildren<Tables.Car>();
+        }
+
+        public void SetData(IEnumerable<Tables.Car> cars)
+        {
+            //foreach(var r in cars)
+            //this.Connection.InsertAllWithChildren(cars, true);
+            foreach (var r in cars)
+                this.Connection.UpdateWithChildren(r);
         }
     }
 }

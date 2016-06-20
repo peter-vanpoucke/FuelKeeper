@@ -25,7 +25,7 @@ namespace be.subport.app.FuelKeeper.SrvLib.DB.Tables
             set;
         }
 
-        [ManyToOne("car_refuel_fk","refuels")]
+        [ManyToOne]
         public Car car
         {
             get;
